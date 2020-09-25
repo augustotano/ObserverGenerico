@@ -2,32 +2,16 @@ using System;
 
 namespace Observer
 {
-    public struct Temperature
+    public struct Temperature: IObject
     {
-        private decimal degrees;
+        public decimal ObjectValue{get;}
 
-        private DateTime date;
+        public DateTime Date {get;}
 
         public Temperature(decimal temperature, DateTime dateAndTime)
         {
-            this.degrees = temperature;
-            this.date = dateAndTime;
-        }
-
-        public decimal Degrees
-        {
-            get
-            {
-                return this.degrees;
-            }
-        }
-
-        public DateTime Date
-        {
-            get
-            {
-                return this.date;
-            }
+            this.ObjectValue = temperature;
+            this.Date = dateAndTime;
         }
     }
 }

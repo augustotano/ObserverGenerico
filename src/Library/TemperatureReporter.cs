@@ -6,7 +6,7 @@ namespace Observer
     {
         private bool first = true;
 
-        private Temperature last;
+        private IObject last;
         
         private IObservable provider;
 
@@ -22,9 +22,9 @@ namespace Observer
             this.provider.Unsubscribe(this);
         }
 
-        public void Update(Temperature value)
+        public void Update(IObject value)
         {
-            Console.WriteLine($"The temperature is {value.Degrees}°C at {value.Date:g}");
+            Console.WriteLine($"The temperature is {value.ObjectValue}°C at {value.Date:g}");
             if (first)
             {
                 last = value;
@@ -32,7 +32,7 @@ namespace Observer
             }
             else
             {
-                Console.WriteLine($"   Change: {value.Degrees - last.Degrees}° in " +
+                Console.WriteLine($"   Change: {value.ObjectValue - last.ObjectValue}° in " +
                     $"{value.Date.ToUniversalTime() - last.Date.ToUniversalTime():g}");
             }
         }
